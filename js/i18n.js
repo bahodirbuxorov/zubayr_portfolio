@@ -4,6 +4,7 @@
   var I18N = {
     uz: {
       "meta.title": "Zubayr Production - Mobilograf va Videograf",
+      "meta.desc": "Zubayr Production - mobilografiya, videografiya va reels montaj. G'oyadan tayyor kadrgacha butun jarayon bir qo'lda.",
       "nav.works": "Ishlar",
       "nav.services": "Xizmatlar",
       "nav.about": "Men haqimda",
@@ -47,6 +48,7 @@
     },
     ru: {
       "meta.title": "Zubayr Production - Мобилограф и видеограф",
+      "meta.desc": "Zubayr Production - мобилография, видеосъёмка и монтаж reels. Весь путь от идеи до готового кадра в одних руках.",
       "nav.works": "Работы",
       "nav.services": "Услуги",
       "nav.about": "Обо мне",
@@ -90,6 +92,7 @@
     },
     en: {
       "meta.title": "Zubayr Production - Videographer and Reels Editor",
+      "meta.desc": "Zubayr Production - mobile videography, filmmaking and reels editing. From idea to final cut, handled end to end.",
       "nav.works": "Work",
       "nav.services": "Services",
       "nav.about": "About",
@@ -161,6 +164,9 @@
 
     document.documentElement.lang = lang;
     document.title = dict["meta.title"];
+
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc && dict["meta.desc"]) desc.setAttribute("content", dict["meta.desc"]);
 
     try { localStorage.setItem("zubayr-lang", lang); } catch (e) { /* private mode */ }
   }
