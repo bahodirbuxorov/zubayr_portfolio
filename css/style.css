@@ -196,6 +196,16 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
   opacity: 0.55;
 }
 
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+
 .hero-scrim {
   position: absolute;
   inset: 0;
@@ -283,12 +293,17 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
 
 /* ---------- Showreel ---------- */
 
+.showreel-zoom {
+  margin-bottom: 72px;
+  transform: scale(var(--zoom, 1));
+  transform-origin: 50% 30%;
+}
+
 .showreel {
   position: relative;
   display: block;
   border-radius: var(--radius-media);
   overflow: hidden;
-  margin-bottom: 72px;
 }
 
 .showreel img {
@@ -567,7 +582,7 @@ a:focus-visible,
   .w-7, .w-6, .w-5 { grid-column: span 1; }
 
   .hero-content { padding-bottom: 80px; }
-  .showreel { margin-bottom: 56px; }
+  .showreel-zoom { margin-bottom: 56px; }
   .play { width: 60px; height: 60px; }
 }
 
@@ -595,4 +610,182 @@ a:focus-visible,
   .btn {
     transition: none;
   }
+}
+
+/* ---------- Section subtitle ---------- */
+
+.section-sub {
+  color: var(--text-2);
+  max-width: 52ch;
+  margin: -32px 0 56px;
+}
+
+/* ---------- Reels phones ---------- */
+
+.reels-row {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px max(24px, calc((100vw - 1200px) / 2 + 24px)) 24px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reels-row::-webkit-scrollbar { display: none; }
+
+.phone {
+  flex: 0 0 auto;
+  width: min(268px, 68vw);
+  scroll-snap-align: center;
+  border-radius: 48px;
+  padding: 10px;
+  background: #17171a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+
+.phone-screen {
+  position: relative;
+  aspect-ratio: 9 / 19.5;
+  border-radius: 38px;
+  overflow: hidden;
+  background: #000;
+}
+
+.phone-screen::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86px;
+  height: 26px;
+  border-radius: 14px;
+  background: rgba(5, 5, 6, 0.92);
+}
+
+.phone video,
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* ---------- Before / After slider ---------- */
+
+.ba {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-media);
+  overflow: hidden;
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ba img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-after { filter: saturate(1.12) contrast(1.06); }
+
+.ba-before-wrap {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+}
+
+.ba-before { filter: saturate(0) contrast(0.8) brightness(1.12); }
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos, 50%);
+  width: 2px;
+  margin-left: -1px;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+}
+
+.ba-knob {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.ba-knob:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.ba-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+/* ---------- Film grain ---------- */
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 2000;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .grain { animation: grain-jitter 0.9s steps(6) infinite; }
+}
+
+@keyframes grain-jitter {
+  0%   { transform: translate(0, 0); }
+  17%  { transform: translate(-1.2%, 0.8%); }
+  33%  { transform: translate(0.7%, -1.1%); }
+  50%  { transform: translate(-0.9%, -0.6%); }
+  67%  { transform: translate(1.1%, 0.5%); }
+  83%  { transform: translate(-0.5%, 1.2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---------- New components: responsive ---------- */
+
+@media (max-width: 768px) {
+  .section-sub { margin: -24px 0 40px; }
+  .reels-row { gap: 20px; padding-left: 24px; padding-right: 24px; }
+  .ba-knob { width: 40px; height: 40px; }
+}
+
+/* ---------- New components: reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { display: none; }
+  .showreel-zoom { transform: none; }
 }

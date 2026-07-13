@@ -37,6 +37,12 @@
       "about.p1": "Men Zubayr. Kamera men uchun shunchaki asbob emas, fikrni yetkazish tili. Har loyihada maqsad bitta: tomoshabin kadrni oxirigacha ko'rsin.",
       "about.p2": "Brendlar, tadbirlar va shaxsiy loyihalar bilan ishlayman. Jarayon oddiy: g'oyani kelishamiz, suratga olamiz, montaj qilaman va natijani o'z vaqtida topshiraman.",
       "about.tg": "Telegram kanal",
+      "reels.title": "Reels formatida",
+      "reels.sub": "Vertikal kadr alohida san'at: birinchi soniyada ushlaydi, oxirigacha qo'yib yubormaydi.",
+      "grading.title": "Farqni o'zingiz ko'ring",
+      "grading.sub": "Chapda kameradan chiqqan xom kadr, o'ngda color grading'dan keyingi natija. Dastakni suring.",
+      "grading.before": "Xom kadr",
+      "grading.after": "Color grading",
       "contact.title": "G'oyangiz bormi?<br>Kadrga aylantiramiz."
     },
     ru: {
@@ -74,6 +80,12 @@
       "about.p1": "Я Зубайр. Камера для меня не просто инструмент, а язык, на котором я рассказываю истории. Цель в каждом проекте одна: чтобы зритель досмотрел кадр до конца.",
       "about.p2": "Работаю с брендами, событиями и личными проектами. Процесс простой: обсуждаем идею, снимаем, я монтирую и сдаю результат точно в срок.",
       "about.tg": "Telegram-канал",
+      "reels.title": "В формате reels",
+      "reels.sub": "Вертикальный кадр - отдельное искусство: цепляет с первой секунды и держит до конца.",
+      "grading.title": "Увидьте разницу сами",
+      "grading.sub": "Слева исходный кадр с камеры, справа результат цветокоррекции. Потяните ползунок.",
+      "grading.before": "Исходник",
+      "grading.after": "Цветокоррекция",
       "contact.title": "Есть идея?<br>Превратим её в кадр."
     },
     en: {
@@ -111,6 +123,12 @@
       "about.p1": "I'm Zubayr. To me, a camera is not just a tool, it's a language for telling stories. Every project has one goal: the viewer watches to the very end.",
       "about.p2": "I work with brands, events and personal projects. The process is simple: we align on the idea, we shoot, I edit, and I deliver on time.",
       "about.tg": "Telegram channel",
+      "reels.title": "Made for reels",
+      "reels.sub": "Vertical video is its own craft: it hooks in the first second and holds until the end.",
+      "grading.title": "See the difference yourself",
+      "grading.sub": "Raw camera footage on the left, the graded result on the right. Drag the handle.",
+      "grading.before": "Raw footage",
+      "grading.after": "Color grading",
       "contact.title": "Have an idea?<br>Let's film it."
     }
   };
