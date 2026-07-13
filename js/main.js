@@ -106,6 +106,15 @@
   var heroVideo = document.querySelector('.hero-video');
   var reelVideos = document.querySelectorAll('.reel-video');
 
+  if (heroVideo) {
+    heroVideo.addEventListener('playing', function () {
+      heroVideo.parentElement.classList.add('video-live');
+    });
+    heroVideo.addEventListener('error', function () {
+      heroVideo.parentElement.classList.remove('video-live');
+    });
+  }
+
   if (reduceMotion) {
     if (heroVideo) {
       heroVideo.removeAttribute('autoplay');
