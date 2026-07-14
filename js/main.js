@@ -104,7 +104,7 @@
 
   // ---------- Videos: play only when visible, respect reduced motion ----------
   var heroVideo = document.querySelector('.hero-video');
-  var reelVideos = document.querySelectorAll('.reel-video');
+  var reelVideos = document.querySelectorAll('.reel-video, .work-video, .ba-video');
 
   if (heroVideo) {
     heroVideo.addEventListener('playing', function () {
@@ -120,7 +120,10 @@
       heroVideo.removeAttribute('autoplay');
       heroVideo.pause();
     }
-    reelVideos.forEach(function (v) { v.pause(); });
+    reelVideos.forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
   } else if ('IntersectionObserver' in window) {
     var videoIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {

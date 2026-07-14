@@ -1,0 +1,4 @@
+# Raw client Instagram screenshots contain personal details (followed-by names,
+# battery/clock UI) — only the cropped avatars in assets/clients/avatars/ are published.
+assets/clients/*.jpg
+assets/clients/*.png
