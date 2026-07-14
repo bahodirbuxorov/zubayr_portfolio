@@ -153,47 +153,45 @@
   if (music && musicBtn) {
     music.volume = 0.65;
 
-    var playFromStart = function () {
-      music.currentTime = MUSIC_START;
-      var p = music.play();
-      if (p && p.catch) p.catch(function () { /* blocked */ });
-    };
-
     // The track is fetched once as a blob: blob URLs are always seekable,
     // so the 0:42 start works even behind servers without Range support.
-    var musicReady = false;
-    var musicLoading = false;
+    var musicReadyPromise = null;
+    var ensureMusic = function () {
+      if (!musicReadyPromise) {
+        musicReadyPromise = fetch(music.getAttribute('src'))
+          .then(function (r) { return r.blob(); })
+          .then(function (blob) {
+            return new Promise(function (resolve) {
+              music.src = URL.createObjectURL(blob);
+              music.addEventListener('loadedmetadata', resolve, { once: true });
+              music.load();
+            });
+          })
+          .catch(function () { /* fall back to the original src */ });
+      }
+      return musicReadyPromise;
+    };
+
+    var startedOnce = false;
+    var startMusic = function () {
+      return ensureMusic().then(function () {
+        if (!startedOnce) music.currentTime = MUSIC_START;
+        var p = music.play();
+        if (p && p.then) return p.then(function () { startedOnce = true; });
+        startedOnce = true;
+      });
+    };
+
+    var mutedByUser = false;
 
     musicBtn.addEventListener('click', function () {
-      if (!music.paused) {
+      if (music.paused) {
+        mutedByUser = false;
+        startMusic().catch(function () { /* blocked */ });
+      } else {
+        mutedByUser = true;
         music.pause();
-        return;
       }
-      if (musicReady) {
-        var p = music.play();
-        if (p && p.catch) p.catch(function () { /* blocked */ });
-        return;
-      }
-      if (musicLoading) return;
-      musicLoading = true;
-
-      fetch(music.getAttribute('src'))
-        .then(function (r) { return r.blob(); })
-        .then(function (blob) {
-          music.src = URL.createObjectURL(blob);
-          music.addEventListener('loadedmetadata', function () {
-            musicReady = true;
-            musicLoading = false;
-            playFromStart();
-          }, { once: true });
-          music.load();
-        })
-        .catch(function () {
-          // fetch failed: fall back to playing the original src directly
-          musicLoading = false;
-          musicReady = true;
-          playFromStart();
-        });
     });
 
     music.addEventListener('play', function () {
@@ -206,7 +204,24 @@
       musicBtn.setAttribute('aria-pressed', 'false');
     });
 
-    music.addEventListener('ended', playFromStart);
+    music.addEventListener('ended', function () {
+      music.currentTime = MUSIC_START;
+      var p = music.play();
+      if (p && p.catch) p.catch(function () { /* ignore */ });
+    });
+
+    // Autoplay on entry. Browsers usually block un-muted autoplay, so if the
+    // attempt is rejected, start on the visitor's first tap, click or key.
+    var kickOnGesture = function () {
+      if (mutedByUser || !music.paused) return;
+      startMusic().catch(function () { /* still blocked */ });
+    };
+
+    startMusic().catch(function () {
+      ['pointerup', 'keydown', 'touchend'].forEach(function (ev) {
+        window.addEventListener(ev, kickOnGesture, { once: true, passive: true });
+      });
+    });
   }
 
   // ---------- Videos: play only when visible, respect reduced motion ----------
