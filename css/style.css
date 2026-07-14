@@ -841,7 +841,23 @@ a:focus-visible,
   100% { transform: translate(0, 0); }
 }
 
-/* ---------- Clients marquee ---------- */
+/* ---------- Trust band + clients marquee ---------- */
+
+.trust {
+  padding: 34px 0 42px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.trust-label {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-3);
+  margin-bottom: 26px;
+  padding: 0 24px;
+}
 
 .clients-marquee {
   overflow: hidden;

@@ -7,7 +7,6 @@
       "meta.desc": "Zubayr Production - Buxorodagi mobilograf va videograf. Mobilografiya, videografiya va reels montaj: g'oyadan tayyor kadrgacha.",
       "nav.works": "Ishlar",
       "nav.services": "Xizmatlar",
-      "nav.clients": "Mijozlar",
       "nav.about": "Men haqimda",
       "cta.contact": "Bog'lanish",
       "cta.works": "Ishlarni ko'rish",
@@ -44,8 +43,7 @@
       "grading.sub": "Chapda kameradan chiqqan xom kadr, o'ngda color grading'dan keyingi natija. Dastakni suring.",
       "grading.before": "Xom kadr",
       "grading.after": "Color grading",
-      "clients.title": "Menga ishonch bildirganlar",
-      "clients.sub": "Buxorodagi brendlar, restoranlar va blogerlar. Ushbu sahifalarning jami auditoriyasi — 590 000+ obunachi.",
+      "clients.band": "Menga ishonch bildirganlar — jami auditoriyasi 590 000+ obunachi",
       "clients.fw": "obunachi",
       "contact.title": "G'oyangiz bormi?<br>Kadrga aylantiramiz."
     },
@@ -54,7 +52,6 @@
       "meta.desc": "Zubayr Production - мобилограф и видеограф в Бухаре. Мобилография, видеосъёмка и монтаж reels: от идеи до готового кадра.",
       "nav.works": "Работы",
       "nav.services": "Услуги",
-      "nav.clients": "Клиенты",
       "nav.about": "Обо мне",
       "cta.contact": "Связаться",
       "cta.works": "Смотреть работы",
@@ -91,8 +88,7 @@
       "grading.sub": "Слева исходный кадр с камеры, справа результат цветокоррекции. Потяните ползунок.",
       "grading.before": "Исходник",
       "grading.after": "Цветокоррекция",
-      "clients.title": "Мне доверяют",
-      "clients.sub": "Бренды, рестораны и блогеры Бухары. Суммарная аудитория этих страниц — более 590 000 подписчиков.",
+      "clients.band": "Мне доверяют — суммарная аудитория 590 000+ подписчиков",
       "clients.fw": "подписчиков",
       "contact.title": "Есть идея?<br>Превратим её в кадр."
     },
@@ -101,7 +97,6 @@
       "meta.desc": "Zubayr Production - videographer and reels editor in Bukhara, Uzbekistan. From idea to final cut, handled end to end.",
       "nav.works": "Work",
       "nav.services": "Services",
-      "nav.clients": "Clients",
       "nav.about": "About",
       "cta.contact": "Get in touch",
       "cta.works": "View work",
@@ -138,8 +133,7 @@
       "grading.sub": "Raw camera footage on the left, the graded result on the right. Drag the handle.",
       "grading.before": "Raw footage",
       "grading.after": "Color grading",
-      "clients.title": "Trusted by",
-      "clients.sub": "Brands, restaurants and creators in Bukhara — a combined audience of 590,000+ followers.",
+      "clients.band": "Trusted by clients with a combined audience of 590,000+ followers",
       "clients.fw": "followers",
       "contact.title": "Have an idea?<br>Let's film it."
     }
