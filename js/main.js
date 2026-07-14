@@ -102,6 +102,49 @@
     });
   }
 
+  // ---------- Reels row: mouse drag-to-scroll (touch scrolls natively) ----------
+  var reelsRow = document.querySelector('.reels-row');
+
+  if (reelsRow) {
+    var rowDrag = null;
+    var suppressClick = false;
+
+    reelsRow.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      rowDrag = { x: e.clientX, left: reelsRow.scrollLeft, id: e.pointerId, moved: false };
+    });
+
+    reelsRow.addEventListener('pointermove', function (e) {
+      if (!rowDrag) return;
+      var dx = e.clientX - rowDrag.x;
+      if (!rowDrag.moved && Math.abs(dx) > 6) {
+        rowDrag.moved = true;
+        reelsRow.classList.add('dragging');
+        reelsRow.setPointerCapture(rowDrag.id);
+      }
+      if (rowDrag.moved) reelsRow.scrollLeft = rowDrag.left - dx;
+    });
+
+    var endRowDrag = function () {
+      if (!rowDrag) return;
+      suppressClick = rowDrag.moved;
+      rowDrag = null;
+      reelsRow.classList.remove('dragging');
+    };
+
+    reelsRow.addEventListener('pointerup', endRowDrag);
+    reelsRow.addEventListener('pointercancel', endRowDrag);
+
+    // a drag must not count as a click on the phone links
+    reelsRow.addEventListener('click', function (e) {
+      if (suppressClick) {
+        e.preventDefault();
+        e.stopPropagation();
+        suppressClick = false;
+      }
+    }, true);
+  }
+
   // ---------- Videos: play only when visible, respect reduced motion ----------
   var heroVideo = document.querySelector('.hero-video');
   var reelVideos = document.querySelectorAll('.reel-video, .work-video, .ba-video');

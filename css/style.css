@@ -696,6 +696,11 @@ a:focus-visible,
 
 .reels-row::-webkit-scrollbar { display: none; }
 
+/* mouse users can grab anywhere in the row, including on the phones */
+.reels-row { cursor: grab; }
+.reels-row.dragging { cursor: grabbing; scroll-snap-type: none; }
+.reels-row.dragging .phone { pointer-events: none; }
+
 .phone {
   display: block;
   flex: 0 0 auto;
@@ -746,7 +751,8 @@ a:focus-visible,
   overflow: hidden;
   background: #000;
   cursor: ew-resize;
-  touch-action: none;
+  /* pan-y keeps vertical page scroll alive on touch; horizontal drags reach the slider */
+  touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
 }
