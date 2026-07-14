@@ -2,3 +2,6 @@
 # battery/clock UI) — only the cropped avatars in assets/clients/avatars/ are published.
 assets/clients/*.jpg
 assets/clients/*.png
+
+# Original heavy master kept locally; the compressed hero-new.mp4 ships instead.
+assets/hero-new.MOV
