@@ -516,8 +516,7 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
 
 .about-media img {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  height: auto;
 }
 
 .about-text .section-title { margin-bottom: 28px; }
