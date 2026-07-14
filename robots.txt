@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bahodirbuxorov.github.io/zubayr_portfolio/sitemap.xml
+Sitemap: https://zubayr.uz/sitemap.xml
