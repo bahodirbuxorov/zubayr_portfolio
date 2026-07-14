@@ -428,7 +428,9 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
 .work-ig em { font-style: normal; }
 
 .work:hover .work-ig,
-.work:focus-visible .work-ig {
+.work:focus-visible .work-ig,
+.phone:hover .work-ig,
+.phone:focus-visible .work-ig {
   opacity: 1;
   transform: none;
 }
@@ -696,6 +698,7 @@ a:focus-visible,
 .reels-row::-webkit-scrollbar { display: none; }
 
 .phone {
+  display: block;
   flex: 0 0 auto;
   width: min(268px, 68vw);
   scroll-snap-align: center;

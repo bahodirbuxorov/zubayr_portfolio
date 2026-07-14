@@ -191,31 +191,69 @@
         <p class="section-sub reveal" data-i18n="reels.sub">Vertikal kadr alohida san'at: birinchi soniyada ushlaydi, oxirigacha qo'yib yubormaydi.</p>
       </div>
       <div class="reels-row" aria-label="Reels namunalari">
-        <div class="phone reveal">
+        <a class="phone reveal" href="https://www.instagram.com/reel/DZVHe4Po7mn/" target="_blank" rel="noopener">
           <div class="phone-screen">
             <video class="reel-video" src="assets/reels/reels1.mp4" muted loop playsinline preload="metadata"></video>
+            <span class="work-ig" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+              <em data-i18n="works.view">Instagramda ko'rish</em>
+            </span>
           </div>
-        </div>
-        <div class="phone reveal" style="transition-delay:.06s">
+        </a>
+        <a class="phone reveal" href="https://www.instagram.com/reel/DYKetacIrhW/" target="_blank" rel="noopener" style="transition-delay:.06s">
           <div class="phone-screen">
             <video class="reel-video" src="assets/reels/reels2.mp4" muted loop playsinline preload="metadata"></video>
+            <span class="work-ig" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+              <em data-i18n="works.view">Instagramda ko'rish</em>
+            </span>
           </div>
-        </div>
-        <div class="phone reveal" style="transition-delay:.12s">
+        </a>
+        <a class="phone reveal" href="https://www.instagram.com/reel/DXhGDaEAhqa/" target="_blank" rel="noopener" style="transition-delay:.12s">
           <div class="phone-screen">
             <video class="reel-video" src="assets/reels/reels3.mp4" muted loop playsinline preload="metadata"></video>
+            <span class="work-ig" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+              <em data-i18n="works.view">Instagramda ko'rish</em>
+            </span>
           </div>
-        </div>
-        <div class="phone reveal" style="transition-delay:.18s">
+        </a>
+        <a class="phone reveal" href="https://www.instagram.com/reel/DXTvJ78CE8e/" target="_blank" rel="noopener" style="transition-delay:.18s">
           <div class="phone-screen">
             <video class="reel-video" src="assets/reels/reels4.mp4" muted loop playsinline preload="metadata"></video>
+            <span class="work-ig" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+              <em data-i18n="works.view">Instagramda ko'rish</em>
+            </span>
           </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Before / After grading -->
+    <section class="section" id="grading">
+      <div class="container">
+        <h2 class="section-title reveal" data-i18n="grading.title">Farqni o'zingiz ko'ring</h2>
+        <p class="section-sub reveal" data-i18n="grading.sub">Chapda kameradan chiqqan xom kadr, o'ngda color grading'dan keyingi natija. Dastakni suring.</p>
+        <!-- One video, two looks: the left side is desaturated live via backdrop-filter, so both halves stay in perfect sync. -->
+        <div class="ba reveal" id="ba" style="--pos:50%">
+          <video class="ba-video" src="assets/color_grading/color-grading.MOV" autoplay muted loop playsinline preload="metadata" aria-label="Color grading namunasi"></video>
+          <div class="ba-veil" aria-hidden="true"></div>
+          <div class="ba-handle">
+            <span class="ba-knob" id="ba-knob" role="slider" tabindex="0" aria-label="Before / After" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="ba-labels reveal">
+          <span data-i18n="grading.before">Xom kadr</span>
+          <span data-i18n="grading.after">Color grading</span>
         </div>
       </div>
     </section>
 
     <!-- Services -->
-    <section class="section" id="xizmatlar">
+    <section class="section section-alt" id="xizmatlar">
       <div class="container">
         <h2 class="section-title reveal" data-i18n="services.title">Xizmatlar</h2>
         <ul class="services">
@@ -236,28 +274,6 @@
             <p data-i18n="s4.desc">Kadrlaringizga kinematik ko'rinish beraman: puxta montaj, aniq rang korreksiyasi va toza ovoz.</p>
           </li>
         </ul>
-      </div>
-    </section>
-
-    <!-- Before / After grading -->
-    <section class="section section-alt" id="grading">
-      <div class="container">
-        <h2 class="section-title reveal" data-i18n="grading.title">Farqni o'zingiz ko'ring</h2>
-        <p class="section-sub reveal" data-i18n="grading.sub">Chapda kameradan chiqqan xom kadr, o'ngda color grading'dan keyingi natija. Dastakni suring.</p>
-        <!-- One video, two looks: the left side is desaturated live via backdrop-filter, so both halves stay in perfect sync. -->
-        <div class="ba reveal" id="ba" style="--pos:50%">
-          <video class="ba-video" src="assets/color_grading/color-grading.MOV" autoplay muted loop playsinline preload="metadata" aria-label="Color grading namunasi"></video>
-          <div class="ba-veil" aria-hidden="true"></div>
-          <div class="ba-handle">
-            <span class="ba-knob" id="ba-knob" role="slider" tabindex="0" aria-label="Before / After" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6"/></svg>
-            </span>
-          </div>
-        </div>
-        <div class="ba-labels reveal">
-          <span data-i18n="grading.before">Xom kadr</span>
-          <span data-i18n="grading.after">Color grading</span>
-        </div>
       </div>
     </section>
 
