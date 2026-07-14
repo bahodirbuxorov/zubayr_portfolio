@@ -145,6 +145,70 @@
     }, true);
   }
 
+  // ---------- Background music (starts at 0:42, restarts there on end) ----------
+  var music = document.getElementById('bg-music');
+  var musicBtn = document.getElementById('music-btn');
+  var MUSIC_START = 42;
+
+  if (music && musicBtn) {
+    music.volume = 0.65;
+
+    var playFromStart = function () {
+      music.currentTime = MUSIC_START;
+      var p = music.play();
+      if (p && p.catch) p.catch(function () { /* blocked */ });
+    };
+
+    // The track is fetched once as a blob: blob URLs are always seekable,
+    // so the 0:42 start works even behind servers without Range support.
+    var musicReady = false;
+    var musicLoading = false;
+
+    musicBtn.addEventListener('click', function () {
+      if (!music.paused) {
+        music.pause();
+        return;
+      }
+      if (musicReady) {
+        var p = music.play();
+        if (p && p.catch) p.catch(function () { /* blocked */ });
+        return;
+      }
+      if (musicLoading) return;
+      musicLoading = true;
+
+      fetch(music.getAttribute('src'))
+        .then(function (r) { return r.blob(); })
+        .then(function (blob) {
+          music.src = URL.createObjectURL(blob);
+          music.addEventListener('loadedmetadata', function () {
+            musicReady = true;
+            musicLoading = false;
+            playFromStart();
+          }, { once: true });
+          music.load();
+        })
+        .catch(function () {
+          // fetch failed: fall back to playing the original src directly
+          musicLoading = false;
+          musicReady = true;
+          playFromStart();
+        });
+    });
+
+    music.addEventListener('play', function () {
+      musicBtn.classList.add('playing');
+      musicBtn.setAttribute('aria-pressed', 'true');
+    });
+
+    music.addEventListener('pause', function () {
+      musicBtn.classList.remove('playing');
+      musicBtn.setAttribute('aria-pressed', 'false');
+    });
+
+    music.addEventListener('ended', playFromStart);
+  }
+
   // ---------- Videos: play only when visible, respect reduced motion ----------
   var heroVideo = document.querySelector('.hero-video');
   var reelVideos = document.querySelectorAll('.reel-video, .work-video, .ba-video');

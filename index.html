@@ -191,13 +191,11 @@
         <h2 class="section-title reveal" data-i18n="works.title">Tanlangan ishlar</h2>
 
         <div class="showreel-zoom">
-          <a href="https://www.instagram.com/zubayr.production/" target="_blank" rel="noopener" class="showreel reveal">
-            <img src="https://picsum.photos/seed/zubayr-showreel-frame/1600/900?grayscale" alt="Showreel kadri" loading="lazy">
-            <span class="play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
-            </span>
+          <div class="showreel reveal">
+            <!-- Oversized + pointer-events:none keeps YouTube overlays cropped out and non-interactive -->
+            <iframe class="showreel-frame" src="https://www.youtube-nocookie.com/embed/QBpvtIF6uOY?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=QBpvtIF6uOY&amp;playsinline=1&amp;rel=0&amp;iv_load_policy=3&amp;disablekb=1&amp;fs=0" title="Showreel 2026" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <span class="showreel-caption">Showreel 2026</span>
-          </a>
+          </div>
         </div>
 
         <div class="work-grid">
@@ -401,6 +399,13 @@
       </div>
     </div>
   </footer>
+
+  <!-- Background music -->
+  <audio id="bg-music" src="assets/music.m4a" preload="none"></audio>
+  <button type="button" class="music-btn" id="music-btn" aria-label="Musiqa" aria-pressed="false">
+    <svg class="music-icon-note" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    <span class="music-icon-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
 
   <!-- Film grain overlay -->
   <div class="grain" aria-hidden="true"></div>

@@ -305,41 +305,22 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
 .showreel {
   position: relative;
   display: block;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-media);
   overflow: hidden;
+  background: #000;
 }
 
-.showreel img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  transition: transform 0.8s var(--ease);
-}
-
-.showreel:hover img { transform: scale(1.03); }
-
-.play {
+/* oversized 16:9 iframe: YouTube's title/controls chrome falls outside the crop */
+.showreel-frame {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 124%;
+  height: 124%;
   transform: translate(-50%, -50%);
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.12);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  transition: transform 0.35s var(--ease), background 0.3s ease;
-}
-
-.showreel:hover .play {
-  transform: translate(-50%, -50%) scale(1.08);
-  background: rgba(255, 255, 255, 0.2);
+  border: 0;
+  pointer-events: none;
 }
 
 .showreel-caption {
@@ -645,7 +626,6 @@ a:focus-visible,
 
   .hero-content { padding-bottom: 80px; }
   .showreel-zoom { margin-bottom: 56px; }
-  .play { width: 60px; height: 60px; }
 }
 
 @media (max-width: 480px) {
@@ -665,10 +645,8 @@ a:focus-visible,
 
   .marquee-track { animation: none; }
 
-  .showreel img,
   .work-media img,
   .service h3,
-  .play,
   .btn {
     transition: none;
   }
@@ -816,6 +794,66 @@ a:focus-visible,
   margin: 16px auto 0;
   font-size: 14px;
   color: var(--text-3);
+}
+
+/* ---------- Music toggle ---------- */
+
+.music-btn {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 900;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  background: rgba(19, 19, 21, 0.72);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  cursor: pointer;
+  transition: transform 0.3s var(--ease), border-color 0.25s ease, background 0.25s ease;
+}
+
+.music-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(19, 19, 21, 0.9);
+}
+
+.music-btn:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.music-icon-eq { display: none; align-items: flex-end; gap: 3px; height: 16px; }
+
+.music-icon-eq i {
+  width: 3px;
+  border-radius: 2px;
+  background: var(--text);
+  animation: eq-bounce 1s ease-in-out infinite;
+}
+
+.music-icon-eq i:nth-child(1) { height: 8px; }
+.music-icon-eq i:nth-child(2) { height: 15px; animation-delay: 0.18s; }
+.music-icon-eq i:nth-child(3) { height: 11px; animation-delay: 0.36s; }
+
+@keyframes eq-bounce {
+  0%, 100% { transform: scaleY(0.5); }
+  50%      { transform: scaleY(1); }
+}
+
+/* playing state: note swaps for the animated equalizer */
+.music-btn.playing .music-icon-note { display: none; }
+.music-btn.playing .music-icon-eq { display: flex; }
+
+@media (prefers-reduced-motion: reduce) {
+  .music-icon-eq i { animation: none; }
+  .music-btn { transition: none; }
 }
 
 /* ---------- Film grain ---------- */
