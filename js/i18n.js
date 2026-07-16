@@ -43,7 +43,7 @@
       "grading.sub": "Chapda kameradan chiqqan xom kadr, o'ngda color grading'dan keyingi natija. Dastakni suring.",
       "grading.before": "Xom kadr",
       "grading.after": "Color grading",
-      "clients.band": "Menga ishonch bildirganlar — jami auditoriyasi 590 000+ obunachi",
+      "clients.band": "Menga ishonch bildirganlar — jami auditoriyasi 1 390 000+ obunachi",
       "clients.fw": "obunachi",
       "contact.title": "G'oyangiz bormi?<br>Kadrga aylantiramiz."
     },
@@ -88,7 +88,7 @@
       "grading.sub": "Слева исходный кадр с камеры, справа результат цветокоррекции. Потяните ползунок.",
       "grading.before": "Исходник",
       "grading.after": "Цветокоррекция",
-      "clients.band": "Мне доверяют — суммарная аудитория 590 000+ подписчиков",
+      "clients.band": "Мне доверяют — суммарная аудитория 1 390 000+ подписчиков",
       "clients.fw": "подписчиков",
       "contact.title": "Есть идея?<br>Превратим её в кадр."
     },
@@ -133,7 +133,7 @@
       "grading.sub": "Raw camera footage on the left, the graded result on the right. Drag the handle.",
       "grading.before": "Raw footage",
       "grading.after": "Color grading",
-      "clients.band": "Trusted by clients with a combined audience of 590,000+ followers",
+      "clients.band": "Trusted by clients with a combined audience of 1,390,000+ followers",
       "clients.fw": "followers",
       "contact.title": "Have an idea?<br>Let's film it."
     }

@@ -912,7 +912,7 @@ a:focus-visible,
   display: flex;
   width: max-content;
   padding: 6px 0;
-  animation: marquee 45s linear infinite;
+  animation: marquee 60s linear infinite;
   will-change: transform;
 }
 
