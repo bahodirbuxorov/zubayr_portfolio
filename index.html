@@ -62,6 +62,37 @@
         "url": "https://zubayr.uz/",
         "inLanguage": ["uz", "ru", "en"],
         "about": { "@id": "https://zubayr.uz/#person" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://zubayr.uz/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Narx qanday shakllanadi?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Narx loyihaning hajmi, s'yomka kunlari va montaj murakkabligiga bog'liq. Telegramda g'oyangizni yozing — eshitib chiqib, aniq taklif beraman." }
+          },
+          {
+            "@type": "Question",
+            "name": "Video qancha vaqtda tayyor bo'ladi?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Muddat loyihaga bog'liq: oddiy reels bir necha kunda, kattaroq loyihalar kelishilgan jadval bo'yicha. Muddatni boshida aniq belgilaymiz." }
+          },
+          {
+            "@type": "Question",
+            "name": "Faqat Buxoroda ishlaysizmi?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Asosiy faoliyatim Buxoroda, lekin boshqa shaharlardagi loyihalar uchun ham kelisha olamiz." }
+          },
+          {
+            "@type": "Question",
+            "name": "S'yomka uchun mendan nima talab qilinadi?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sizdan faqat g'oya va s'yomka obyekti. Texnika, yorug'lik, ssenariy va montaj — hammasi videografning zimmasida." }
+          },
+          {
+            "@type": "Question",
+            "name": "Tayyor material kimga tegishli bo'ladi?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Tayyor videolar to'liq buyurtmachiga tegishli. Kelishuvga ko'ra ayrim ishlar portfolioda ko'rsatilishi mumkin." }
+          }
+        ]
       }
     ]
   }
@@ -84,7 +115,7 @@
           <button type="button" class="lang-btn" data-lang="ru">RU</button>
           <button type="button" class="lang-btn" data-lang="en">EN</button>
         </div>
-        <a href="https://t.me/in_dose777" target="_blank" rel="noopener" class="btn btn-nav" data-i18n="cta.contact">Bog'lanish</a>
+        <a href="https://t.me/in_dose777" target="_blank" rel="noopener" class="btn btn-nav" data-tg-cta data-i18n="cta.contact">Bog'lanish</a>
       </div>
     </div>
   </header>
@@ -103,7 +134,7 @@
         <p class="hero-sub reveal" style="transition-delay:.1s" data-i18n="hero.sub">Mobilografiya, videografiya va reels montaj. G'oyadan tayyor kadrgacha butun jarayon bir qo'lda.</p>
         <div class="hero-cta reveal" style="transition-delay:.2s">
           <a href="#ishlar" class="btn btn-primary" data-i18n="cta.works">Ishlarni ko'rish</a>
-          <a href="https://t.me/in_dose777" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="cta.contact">Bog'lanish</a>
+          <a href="https://t.me/in_dose777" target="_blank" rel="noopener" class="btn btn-ghost" data-tg-cta data-i18n="cta.contact">Bog'lanish</a>
         </div>
       </div>
     </section>
@@ -219,13 +250,17 @@
             <!-- Oversized + pointer-events:none keeps YouTube overlays cropped out and non-interactive -->
             <iframe class="showreel-frame" src="https://www.youtube-nocookie.com/embed/QBpvtIF6uOY?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=QBpvtIF6uOY&amp;playsinline=1&amp;rel=0&amp;iv_load_policy=3&amp;disablekb=1&amp;fs=0" title="Showreel 2026" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <span class="showreel-caption">Showreel 2026</span>
+            <button type="button" class="showreel-play" id="showreel-play">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              <span data-i18n="showreel.play">Ovoz bilan ko'rish</span>
+            </button>
           </div>
         </div>
 
         <div class="work-grid">
           <a class="work reveal w-3" href="https://www.instagram.com/reel/DakskiboesT/" target="_blank" rel="noopener">
             <div class="work-media r-916">
-              <video class="work-video" src="assets/works/Moshina.mp4" muted loop playsinline preload="metadata"></video>
+              <video class="work-video" src="assets/works/Moshina.mp4" muted loop playsinline preload="none"></video>
               <span class="work-ig" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
                 <em data-i18n="works.view">Instagramda ko'rish</em>
@@ -236,7 +271,7 @@
           </a>
           <a class="work reveal w-3" href="https://www.instagram.com/reel/DXRhybRCKnf/" target="_blank" rel="noopener" style="transition-delay:.06s">
             <div class="work-media r-916">
-              <video class="work-video" src="assets/works/Restoran.mp4" muted loop playsinline preload="metadata"></video>
+              <video class="work-video" src="assets/works/Restoran.mp4" muted loop playsinline preload="none"></video>
               <span class="work-ig" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
                 <em data-i18n="works.view">Instagramda ko'rish</em>
@@ -247,7 +282,7 @@
           </a>
           <a class="work reveal w-3" href="https://www.instagram.com/reel/DViy_CTj4Il/" target="_blank" rel="noopener" style="transition-delay:.12s">
             <div class="work-media r-916">
-              <video class="work-video" src="assets/works/Brand.mp4" muted loop playsinline preload="metadata"></video>
+              <video class="work-video" src="assets/works/Brand.mp4" muted loop playsinline preload="none"></video>
               <span class="work-ig" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
                 <em data-i18n="works.view">Instagramda ko'rish</em>
@@ -258,7 +293,7 @@
           </a>
           <a class="work reveal w-3" href="https://www.instagram.com/reel/DaF9kJRiWY2/" target="_blank" rel="noopener" style="transition-delay:.18s">
             <div class="work-media r-916">
-              <video class="work-video" src="assets/works/Model.mp4" muted loop playsinline preload="metadata"></video>
+              <video class="work-video" src="assets/works/Model.mp4" muted loop playsinline preload="none"></video>
               <span class="work-ig" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
                 <em data-i18n="works.view">Instagramda ko'rish</em>
@@ -282,7 +317,7 @@
       <div class="reels-row" aria-label="Reels namunalari">
         <a class="phone reveal" draggable="false" href="https://www.instagram.com/reel/DZVHe4Po7mn/" target="_blank" rel="noopener">
           <div class="phone-screen">
-            <video class="reel-video" src="assets/reels/reels1.mp4" muted loop playsinline preload="metadata"></video>
+            <video class="reel-video" src="assets/reels/reels1.mp4" muted loop playsinline preload="none"></video>
             <span class="work-ig" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
               <em data-i18n="works.view">Instagramda ko'rish</em>
@@ -291,7 +326,7 @@
         </a>
         <a class="phone reveal" draggable="false" href="https://www.instagram.com/reel/DYKetacIrhW/" target="_blank" rel="noopener" style="transition-delay:.06s">
           <div class="phone-screen">
-            <video class="reel-video" src="assets/reels/reels2.mp4" muted loop playsinline preload="metadata"></video>
+            <video class="reel-video" src="assets/reels/reels2.mp4" muted loop playsinline preload="none"></video>
             <span class="work-ig" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
               <em data-i18n="works.view">Instagramda ko'rish</em>
@@ -300,7 +335,7 @@
         </a>
         <a class="phone reveal" draggable="false" href="https://www.instagram.com/reel/DXhGDaEAhqa/" target="_blank" rel="noopener" style="transition-delay:.12s">
           <div class="phone-screen">
-            <video class="reel-video" src="assets/reels/reels3.mp4" muted loop playsinline preload="metadata"></video>
+            <video class="reel-video" src="assets/reels/reels3.mp4" muted loop playsinline preload="none"></video>
             <span class="work-ig" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
               <em data-i18n="works.view">Instagramda ko'rish</em>
@@ -309,7 +344,7 @@
         </a>
         <a class="phone reveal" draggable="false" href="https://www.instagram.com/reel/DXTvJ78CE8e/" target="_blank" rel="noopener" style="transition-delay:.18s">
           <div class="phone-screen">
-            <video class="reel-video" src="assets/reels/reels4.mp4" muted loop playsinline preload="metadata"></video>
+            <video class="reel-video" src="assets/reels/reels4.mp4" muted loop playsinline preload="none"></video>
             <span class="work-ig" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
               <em data-i18n="works.view">Instagramda ko'rish</em>
@@ -326,7 +361,8 @@
         <p class="section-sub reveal" data-i18n="grading.sub">Chapda kameradan chiqqan xom kadr, o'ngda color grading'dan keyingi natija. Dastakni suring.</p>
         <!-- One video, two looks: the left side is desaturated live via backdrop-filter, so both halves stay in perfect sync. -->
         <div class="ba reveal" id="ba" style="--pos:50%">
-          <video class="ba-video" src="assets/color_grading/color-grading.MOV" autoplay muted loop playsinline preload="metadata" aria-label="Color grading namunasi"></video>
+          <!-- No autoplay attr: the shared video IntersectionObserver starts it when visible -->
+          <video class="ba-video" src="assets/color_grading/color-grading.MOV" muted loop playsinline preload="none" aria-label="Color grading namunasi"></video>
           <div class="ba-veil" aria-hidden="true"></div>
           <div class="ba-handle">
             <span class="ba-knob" id="ba-knob" role="slider" tabindex="0" aria-label="Before / After" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
@@ -374,6 +410,35 @@
       </div>
     </section>
 
+    <!-- Process -->
+    <section class="section" id="jarayon">
+      <div class="container">
+        <h2 class="section-title reveal" data-i18n="process.title">Qanday ishlaymiz</h2>
+        <ol class="process">
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3 data-i18n="proc1.title">Brif va g'oya</h3>
+            <p data-i18n="proc1.desc">Maqsad, auditoriya va referenslarni kelishamiz. G'oya aniq bo'lgach, s'yomka rejasini tuzaman.</p>
+          </li>
+          <li class="step reveal" style="transition-delay:.06s">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3 data-i18n="proc2.title">S'yomka</h3>
+            <p data-i18n="proc2.desc">Lokatsiyada suratga olamiz: yorug'lik, kompozitsiya va harakat oldindan o'ylangan holda.</p>
+          </li>
+          <li class="step reveal" style="transition-delay:.12s">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3 data-i18n="proc3.title">Montaj va grading</h3>
+            <p data-i18n="proc3.desc">Ritm, musiqa, color grading va toza ovoz. Kadrlar yaxlit hikoyaga aylanadi.</p>
+          </li>
+          <li class="step reveal" style="transition-delay:.18s">
+            <span class="step-num" aria-hidden="true">04</span>
+            <h3 data-i18n="proc4.title">Topshirish</h3>
+            <p data-i18n="proc4.desc">Tayyor videoni kelishilgan muddatda, har bir platformaga mos formatda topshiraman.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <!-- About -->
     <section class="section" id="haqida">
       <div class="container about">
@@ -386,12 +451,56 @@
           <p class="reveal" style="transition-delay:.14s" data-i18n="about.p2">Buxoroda faoliyat yuritaman; brendlar, tadbirlar va shaxsiy loyihalar bilan ishlayman. Jarayon oddiy: g'oyani kelishamiz, suratga olamiz, montaj qilaman va natijani o'z vaqtida topshiraman.</p>
           <div class="about-links reveal" style="transition-delay:.2s">
             <a href="https://www.instagram.com/zubayr.production/" target="_blank" rel="noopener">
-              <img src="https://cdn.simpleicons.org/instagram/A1A1A6" alt="" width="18" height="18" loading="lazy">Instagram
+              <img src="assets/icons/instagram-grey.svg" alt="" width="18" height="18" loading="lazy">Instagram
             </a>
             <a href="https://t.me/zubayrprodd" target="_blank" rel="noopener">
-              <img src="https://cdn.simpleicons.org/telegram/A1A1A6" alt="" width="18" height="18" loading="lazy"><span data-i18n="about.tg">Telegram kanal</span>
+              <img src="assets/icons/telegram-grey.svg" alt="" width="18" height="18" loading="lazy"><span data-i18n="about.tg">Telegram kanal</span>
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="savollar">
+      <div class="container faq-wrap">
+        <h2 class="section-title reveal" data-i18n="faq.title">Ko'p so'raladigan savollar</h2>
+        <div class="faq reveal">
+          <details class="faq-item">
+            <summary>
+              <span data-i18n="faq1.q">Narx qanday shakllanadi?</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p data-i18n="faq1.a">Narx loyihaning hajmi, s'yomka kunlari va montaj murakkabligiga bog'liq. Telegramda g'oyangizni yozing — eshitib chiqib, aniq taklif beraman.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span data-i18n="faq2.q">Video qancha vaqtda tayyor bo'ladi?</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p data-i18n="faq2.a">Muddat loyihaga bog'liq: oddiy reels bir necha kunda, kattaroq loyihalar kelishilgan jadval bo'yicha. Muddatni boshida aniq belgilaymiz va men unga rioya qilaman.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span data-i18n="faq3.q">Faqat Buxoroda ishlaysizmi?</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p data-i18n="faq3.a">Asosiy faoliyatim Buxoroda, lekin boshqa shaharlardagi loyihalar uchun ham kelisha olamiz — yozing, muhokama qilamiz.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span data-i18n="faq4.q">S'yomka uchun mendan nima talab qilinadi?</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p data-i18n="faq4.a">Sizdan faqat g'oya va s'yomka obyekti. Texnika, yorug'lik, ssenariy va montaj — hammasi mening zimmamda.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span data-i18n="faq5.q">Tayyor material kimga tegishli bo'ladi?</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p data-i18n="faq5.a">Tayyor videolar to'liq sizniki. Kelishuvga ko'ra ayrim ishlarni portfolioda ko'rsatishim mumkin.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -401,7 +510,7 @@
       <div class="container">
         <h2 class="contact-title reveal" data-i18n="contact.title">G'oyangiz bormi?<br>Kadrga aylantiramiz.</h2>
         <div class="reveal" style="transition-delay:.1s">
-          <a href="https://t.me/in_dose777" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-i18n="cta.contact">Bog'lanish</a>
+          <a href="https://t.me/in_dose777" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-tg-cta data-i18n="cta.contact">Bog'lanish</a>
         </div>
         <p class="contact-note reveal" style="transition-delay:.16s">Telegram: @in_dose777</p>
       </div>
@@ -415,10 +524,10 @@
       <p>&copy; 2026 Zubayr Production</p>
       <div class="footer-links">
         <a href="https://www.instagram.com/zubayr.production/" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="https://cdn.simpleicons.org/instagram/6E6E73" alt="" width="18" height="18" loading="lazy">
+          <img src="assets/icons/instagram-dim.svg" alt="" width="18" height="18" loading="lazy">
         </a>
         <a href="https://t.me/zubayrprodd" target="_blank" rel="noopener" aria-label="Telegram kanal">
-          <img src="https://cdn.simpleicons.org/telegram/6E6E73" alt="" width="18" height="18" loading="lazy">
+          <img src="assets/icons/telegram-dim.svg" alt="" width="18" height="18" loading="lazy">
         </a>
       </div>
     </div>
@@ -430,6 +539,20 @@
     <svg class="music-icon-note" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
     <span class="music-icon-eq" aria-hidden="true"><i></i><i></i><i></i></span>
   </button>
+
+  <!-- Showreel lightbox (iframe injected on open) -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-lightbox-close></div>
+    <div class="lightbox-body">
+      <button type="button" class="lightbox-close" data-lightbox-close aria-label="Yopish">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="lightbox-frame" id="lightbox-frame"></div>
+    </div>
+  </div>
+
+  <!-- Scroll timecode (film TC style) -->
+  <div class="timecode" id="timecode" aria-hidden="true">TC 00:00:00:00</div>
 
   <!-- Film grain overlay -->
   <div class="grain" aria-hidden="true"></div>

@@ -45,7 +45,29 @@
       "grading.after": "Color grading",
       "clients.band": "Menga ishonch bildirganlar — jami auditoriyasi 1 390 000+ obunachi",
       "clients.fw": "obunachi",
-      "contact.title": "G'oyangiz bormi?<br>Kadrga aylantiramiz."
+      "contact.title": "G'oyangiz bormi?<br>Kadrga aylantiramiz.",
+      "cta.tg_text": "Salom! Saytingiz orqali yozyapman — video loyiha buyurtma qilmoqchi edim.",
+      "showreel.play": "Ovoz bilan ko'rish",
+      "process.title": "Qanday ishlaymiz",
+      "proc1.title": "Brif va g'oya",
+      "proc1.desc": "Maqsad, auditoriya va referenslarni kelishamiz. G'oya aniq bo'lgach, s'yomka rejasini tuzaman.",
+      "proc2.title": "S'yomka",
+      "proc2.desc": "Lokatsiyada suratga olamiz: yorug'lik, kompozitsiya va harakat oldindan o'ylangan holda.",
+      "proc3.title": "Montaj va grading",
+      "proc3.desc": "Ritm, musiqa, color grading va toza ovoz. Kadrlar yaxlit hikoyaga aylanadi.",
+      "proc4.title": "Topshirish",
+      "proc4.desc": "Tayyor videoni kelishilgan muddatda, har bir platformaga mos formatda topshiraman.",
+      "faq.title": "Ko'p so'raladigan savollar",
+      "faq1.q": "Narx qanday shakllanadi?",
+      "faq1.a": "Narx loyihaning hajmi, s'yomka kunlari va montaj murakkabligiga bog'liq. Telegramda g'oyangizni yozing — eshitib chiqib, aniq taklif beraman.",
+      "faq2.q": "Video qancha vaqtda tayyor bo'ladi?",
+      "faq2.a": "Muddat loyihaga bog'liq: oddiy reels bir necha kunda, kattaroq loyihalar kelishilgan jadval bo'yicha. Muddatni boshida aniq belgilaymiz va men unga rioya qilaman.",
+      "faq3.q": "Faqat Buxoroda ishlaysizmi?",
+      "faq3.a": "Asosiy faoliyatim Buxoroda, lekin boshqa shaharlardagi loyihalar uchun ham kelisha olamiz — yozing, muhokama qilamiz.",
+      "faq4.q": "S'yomka uchun mendan nima talab qilinadi?",
+      "faq4.a": "Sizdan faqat g'oya va s'yomka obyekti. Texnika, yorug'lik, ssenariy va montaj — hammasi mening zimmamda.",
+      "faq5.q": "Tayyor material kimga tegishli bo'ladi?",
+      "faq5.a": "Tayyor videolar to'liq sizniki. Kelishuvga ko'ra ayrim ishlarni portfolioda ko'rsatishim mumkin."
     },
     ru: {
       "meta.title": "Zubayr Production - Мобилограф и видеограф в Бухаре",
@@ -90,7 +112,29 @@
       "grading.after": "Цветокоррекция",
       "clients.band": "Мне доверяют — суммарная аудитория 1 390 000+ подписчиков",
       "clients.fw": "подписчиков",
-      "contact.title": "Есть идея?<br>Превратим её в кадр."
+      "contact.title": "Есть идея?<br>Превратим её в кадр.",
+      "cta.tg_text": "Здравствуйте! Пишу с вашего сайта — хочу заказать видеопроект.",
+      "showreel.play": "Смотреть со звуком",
+      "process.title": "Как мы работаем",
+      "proc1.title": "Бриф и идея",
+      "proc1.desc": "Согласовываем цель, аудиторию и референсы. Когда идея ясна, составляю план съёмки.",
+      "proc2.title": "Съёмка",
+      "proc2.desc": "Снимаем на локации: свет, композиция и движение продуманы заранее.",
+      "proc3.title": "Монтаж и цветокоррекция",
+      "proc3.desc": "Ритм, музыка, цветокоррекция и чистый звук. Кадры складываются в цельную историю.",
+      "proc4.title": "Сдача",
+      "proc4.desc": "Сдаю готовое видео точно в срок, в форматах под каждую платформу.",
+      "faq.title": "Частые вопросы",
+      "faq1.q": "Как формируется цена?",
+      "faq1.a": "Цена зависит от объёма проекта, съёмочных дней и сложности монтажа. Напишите идею в Telegram — обсудим и я дам точное предложение.",
+      "faq2.q": "Сколько времени займёт видео?",
+      "faq2.a": "Срок зависит от проекта: простой reels — за несколько дней, крупные проекты — по согласованному графику. Срок фиксируем в начале, и я его соблюдаю.",
+      "faq3.q": "Вы работаете только в Бухаре?",
+      "faq3.a": "Основная работа в Бухаре, но по проектам в других городах тоже можно договориться — напишите, обсудим.",
+      "faq4.q": "Что требуется от меня для съёмки?",
+      "faq4.a": "От вас только идея и объект съёмки. Техника, свет, сценарий и монтаж — всё на мне.",
+      "faq5.q": "Кому принадлежит готовый материал?",
+      "faq5.a": "Готовые видео полностью ваши. По договорённости некоторые работы могу показывать в портфолио."
     },
     en: {
       "meta.title": "Zubayr Production - Videographer in Bukhara",
@@ -135,7 +179,29 @@
       "grading.after": "Color grading",
       "clients.band": "Trusted by clients with a combined audience of 1,390,000+ followers",
       "clients.fw": "followers",
-      "contact.title": "Have an idea?<br>Let's film it."
+      "contact.title": "Have an idea?<br>Let's film it.",
+      "cta.tg_text": "Hi! I found you through your website — I'd like to order a video project.",
+      "showreel.play": "Watch with sound",
+      "process.title": "How we work",
+      "proc1.title": "Brief and idea",
+      "proc1.desc": "We align on the goal, audience and references. Once the idea is clear, I draft the shoot plan.",
+      "proc2.title": "The shoot",
+      "proc2.desc": "We film on location: light, composition and movement planned in advance.",
+      "proc3.title": "Edit and grading",
+      "proc3.desc": "Rhythm, music, color grading and clean sound. The footage becomes one coherent story.",
+      "proc4.title": "Delivery",
+      "proc4.desc": "I deliver the final video on the agreed date, formatted for every platform.",
+      "faq.title": "Frequently asked questions",
+      "faq1.q": "How is the price determined?",
+      "faq1.a": "The price depends on the project scope, shoot days and editing complexity. Send your idea on Telegram — I'll review it and give you an exact quote.",
+      "faq2.q": "How long does a video take?",
+      "faq2.a": "It depends on the project: a simple reel takes a few days, larger projects follow an agreed schedule. We fix the deadline upfront and I stick to it.",
+      "faq3.q": "Do you only work in Bukhara?",
+      "faq3.a": "I'm based in Bukhara, but projects in other cities are possible too — message me and we'll discuss.",
+      "faq4.q": "What do you need from me for a shoot?",
+      "faq4.a": "Only the idea and the subject. Equipment, lighting, script and editing are all on me.",
+      "faq5.q": "Who owns the final material?",
+      "faq5.a": "The final videos are fully yours. With your agreement, I may feature some work in my portfolio."
     }
   };
 
@@ -164,6 +230,15 @@
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
     });
+
+    // contact CTAs open Telegram with a pre-filled message in the visitor's language
+    var tgText = dict["cta.tg_text"];
+    if (tgText) {
+      var tgHref = "https://t.me/in_dose777?text=" + encodeURIComponent(tgText);
+      document.querySelectorAll("[data-tg-cta]").forEach(function (el) {
+        el.setAttribute("href", tgHref);
+      });
+    }
 
     document.documentElement.lang = lang;
     document.title = dict["meta.title"];

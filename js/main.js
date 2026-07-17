@@ -224,6 +224,101 @@
     });
   }
 
+  // ---------- Showreel lightbox: replay with sound and controls ----------
+  var lightbox = document.getElementById('lightbox');
+  var lightboxFrame = document.getElementById('lightbox-frame');
+  var showreelPlay = document.getElementById('showreel-play');
+  var SHOWREEL_ID = 'QBpvtIF6uOY';
+
+  if (lightbox && lightboxFrame && showreelPlay) {
+    var musicWasPlaying = false;
+
+    var openLightbox = function () {
+      musicWasPlaying = !!(music && !music.paused);
+      if (musicWasPlaying) music.pause();
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + SHOWREEL_ID +
+        '?autoplay=1&controls=1&rel=0&playsinline=1';
+      iframe.title = 'Showreel 2026';
+      iframe.allow = 'autoplay; encrypted-media; fullscreen';
+      iframe.setAttribute('allowfullscreen', '');
+      lightboxFrame.appendChild(iframe);
+      lightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lightbox.querySelector('.lightbox-close').focus();
+    };
+
+    var closeLightbox = function () {
+      lightbox.hidden = true;
+      lightboxFrame.innerHTML = '';
+      document.body.style.overflow = '';
+      if (musicWasPlaying && music) {
+        var p = music.play();
+        if (p && p.catch) p.catch(function () { /* ignore */ });
+      }
+      showreelPlay.focus();
+    };
+
+    showreelPlay.addEventListener('click', openLightbox);
+    lightbox.querySelectorAll('[data-lightbox-close]').forEach(function (el) {
+      el.addEventListener('click', closeLightbox);
+    });
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+  }
+
+  // ---------- Scroll timecode: page progress as film TC ----------
+  var timecode = document.getElementById('timecode');
+
+  if (timecode) {
+    var TC_FPS = 24;
+    var TC_TOTAL_SECONDS = 120; // the whole page "runs" two minutes of footage
+    var tcTicking = false;
+
+    var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };
+
+    var updateTimecode = function () {
+      tcTicking = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      var frames = Math.round(progress * TC_TOTAL_SECONDS * TC_FPS);
+      var f = frames % TC_FPS;
+      var s = Math.floor(frames / TC_FPS) % 60;
+      var m = Math.floor(frames / (TC_FPS * 60));
+      timecode.textContent = 'TC 00:' + pad2(m) + ':' + pad2(s) + ':' + pad2(f);
+    };
+
+    var requestTimecode = function () {
+      if (!tcTicking) {
+        tcTicking = true;
+        requestAnimationFrame(updateTimecode);
+      }
+    };
+
+    window.addEventListener('scroll', requestTimecode, { passive: true });
+    window.addEventListener('resize', requestTimecode, { passive: true });
+    updateTimecode();
+  }
+
+  // ---------- Magnetic CTA buttons (fine pointers, motion allowed) ----------
+  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.btn-primary, .btn-ghost').forEach(function (btn) {
+      var MAGNET_MAX = 5;
+
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var dx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        var dy = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+        btn.style.transform = 'translate(' + (dx * MAGNET_MAX).toFixed(1) + 'px,' + (dy * MAGNET_MAX).toFixed(1) + 'px)';
+      });
+
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform = '';
+      });
+    });
+  }
+
   // ---------- Videos: play only when visible, respect reduced motion ----------
   var heroVideo = document.querySelector('.hero-video');
   var reelVideos = document.querySelectorAll('.reel-video, .work-video, .ba-video');
@@ -257,7 +352,9 @@
           video.pause();
         }
       });
-    }, { threshold: 0.35 });
+    // videos ship with preload="none"; play() inside the expanded viewport
+    // both starts the download ahead of time and keeps offscreen videos paused
+    }, { rootMargin: '200px 0px', threshold: 0 });
 
     reelVideos.forEach(function (v) { videoIO.observe(v); });
     if (heroVideo) videoIO.observe(heroVideo);
