@@ -385,11 +385,14 @@
       iframe.setAttribute('allowfullscreen', '');
       lightboxFrame.appendChild(iframe);
       lightbox.hidden = false;
+      // next frame, so the letterbox bars transition in from off-screen
+      requestAnimationFrame(function () { lightbox.classList.add('open'); });
       document.body.style.overflow = 'hidden';
       lightbox.querySelector('.lightbox-close').focus();
     };
 
     var closeLightbox = function () {
+      lightbox.classList.remove('open');
       lightbox.hidden = true;
       lightboxFrame.innerHTML = '';
       document.body.style.overflow = '';
@@ -440,6 +443,48 @@
     window.addEventListener('scroll', requestTimecode, { passive: true });
     window.addEventListener('resize', requestTimecode, { passive: true });
     updateTimecode();
+  }
+
+  // ---------- Stat counters: numbers roll up odometer-style when seen ----------
+  var countEls = document.querySelectorAll('.trust-label, .price-tag');
+  var countGen = 0;
+
+  if (countEls.length && !reduceMotion && 'IntersectionObserver' in window) {
+    var rollCount = function (el) {
+      var text = el.textContent;
+      var m = text.match(/\d[\d\s ,.]*\d|\d/);
+      if (!m) return;
+      var target = parseInt(m[0].replace(/\D/g, ''), 10);
+      if (!target) return;
+      var sep = (m[0].match(/[\s ,.]/) || [''])[0];
+      var duration = target > 1000 ? 1600 : 900;
+      var gen = countGen;
+      var t0 = performance.now();
+
+      var tick = function (now) {
+        if (gen !== countGen) return; // language switched mid-roll
+        var p = Math.min(1, (now - t0) / duration);
+        var eased = 1 - Math.pow(1 - p, 4);
+        var value = String(Math.round(target * eased));
+        if (sep) value = value.replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+        el.textContent = text.slice(0, m.index) + value + text.slice(m.index + m[0].length);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    var countIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        countIO.unobserve(entry.target);
+        rollCount(entry.target);
+      });
+    }, { threshold: 0.5 });
+
+    countEls.forEach(function (el) { countIO.observe(el); });
+
+    // i18n rewrites the text with final numbers; just stop mid-flight rolls
+    document.addEventListener('langchange', function () { countGen++; });
   }
 
   // ---------- Magnetic CTA buttons (fine pointers, motion allowed) ----------
