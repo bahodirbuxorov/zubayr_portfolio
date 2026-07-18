@@ -224,6 +224,46 @@
     });
   }
 
+  // ---------- Scrollspy: highlight the nav link of the section in view ----------
+  // sections without their own nav link roll up into the nearest logical one
+  var SPY_MAP = {
+    ishlar: 'ishlar', reels: 'ishlar', grading: 'ishlar',
+    xizmatlar: 'xizmatlar', jarayon: 'xizmatlar',
+    haqida: 'haqida', savollar: 'haqida', aloqa: 'haqida'
+  };
+  var spyLinks = {};
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (a) {
+    spyLinks[a.getAttribute('href').slice(1)] = a;
+  });
+
+  if (Object.keys(spyLinks).length && 'IntersectionObserver' in window) {
+    var setActiveLink = function (id) {
+      Object.keys(spyLinks).forEach(function (key) {
+        spyLinks[key].classList.toggle('active', key === id);
+      });
+    };
+
+    var spyIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        setActiveLink(SPY_MAP[entry.target.id] || null);
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+
+    Object.keys(SPY_MAP).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) spyIO.observe(section);
+    });
+
+    // clear the highlight while the hero / trust band is on screen
+    var heroSection = document.querySelector('.hero');
+    if (heroSection) {
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) setActiveLink(null);
+      }, { rootMargin: '-35% 0px -55% 0px' }).observe(heroSection);
+    }
+  }
+
   // ---------- Showreel lightbox: replay with sound and controls ----------
   var lightbox = document.getElementById('lightbox');
   var lightboxFrame = document.getElementById('lightbox-frame');
