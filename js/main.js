@@ -460,57 +460,6 @@
     });
   }
 
-  // ---------- Inertia smooth scroll: eased wheel on fine pointers ----------
-  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    var glideTarget = 0;
-    var glideCurrent = 0;
-    var glideRaf = null;
-
-    var glideStep = function () {
-      glideCurrent += (glideTarget - glideCurrent) * 0.115;
-      if (Math.abs(glideTarget - glideCurrent) < 0.5) {
-        glideCurrent = glideTarget;
-        glideRaf = null;
-      } else {
-        glideRaf = requestAnimationFrame(glideStep);
-      }
-      window.scrollTo(0, glideCurrent);
-    };
-
-    window.addEventListener('wheel', function (e) {
-      if (introActive || e.ctrlKey || e.defaultPrevented) return;
-      // horizontal intent (reels row) and pinch-zoom stay native
-      if (e.shiftKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-      if (lightbox && !lightbox.hidden) return;
-      e.preventDefault();
-      var dy = e.deltaY * (e.deltaMode === 1 ? 16 : 1);
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      if (glideRaf === null) {
-        glideCurrent = window.scrollY;
-        glideTarget = glideCurrent;
-      }
-      glideTarget = Math.max(0, Math.min(max, glideTarget + dy));
-      if (glideRaf === null) glideRaf = requestAnimationFrame(glideStep);
-    }, { passive: false });
-
-    // keyboard, scrollbar and anchor scrolls happen natively: follow them
-    window.addEventListener('scroll', function () {
-      if (glideRaf === null) {
-        glideCurrent = window.scrollY;
-        glideTarget = glideCurrent;
-      }
-    }, { passive: true });
-
-    // an anchor click must win over a still-running glide
-    document.addEventListener('click', function (e) {
-      var link = e.target.closest && e.target.closest('a[href^="#"]');
-      if (link && glideRaf !== null) {
-        cancelAnimationFrame(glideRaf);
-        glideRaf = null;
-      }
-    }, true);
-  }
-
   // ---------- Videos: play only when visible, respect reduced motion ----------
   var heroVideo = document.querySelector('.hero-video');
   var reelVideos = document.querySelectorAll('.reel-video, .work-video, .ba-video');
