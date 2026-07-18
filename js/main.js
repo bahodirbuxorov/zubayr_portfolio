@@ -229,6 +229,7 @@
   var SPY_MAP = {
     ishlar: 'ishlar', reels: 'ishlar', grading: 'ishlar',
     xizmatlar: 'xizmatlar', jarayon: 'xizmatlar',
+    narxlar: 'narxlar',
     haqida: 'haqida', savollar: 'haqida', aloqa: 'haqida'
   };
   var spyLinks = {};
