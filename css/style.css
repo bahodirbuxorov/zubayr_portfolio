@@ -406,6 +406,7 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
   transform: translateY(8px);
   transition: opacity 0.35s ease, transform 0.45s var(--ease);
   pointer-events: none;
+  z-index: 3; /* stays above the viewfinder corner brackets */
 }
 
 .work-ig em { font-style: normal; }
@@ -1290,4 +1291,200 @@ a:focus-visible,
   .clients-track { animation: none; }
   .work-video, .work-ig, .client-chip { transition: none; }
   .faq-item summary svg, .showreel-play { transition: none; }
+}
+
+/* ---------- Film-leader intro ---------- */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1500; /* below the grain overlay, so the leader gets film texture too */
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* crosshair through the frame center */
+.intro::before,
+.intro::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.intro::before { left: 50%; top: 0; bottom: 0; width: 1px; }
+.intro::after  { top: 50%; left: 0; right: 0; height: 1px; }
+
+.intro-ring {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-ring::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.intro-hand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.5px;
+  height: 82px;
+  margin-left: -0.75px;
+  transform-origin: top center;
+  background: linear-gradient(rgba(245, 245, 247, 0), rgba(245, 245, 247, 0.8));
+  animation: intro-spin 0.45s linear 3;
+}
+
+@keyframes intro-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.intro-num {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  animation: intro-num-in 0.45s var(--ease);
+}
+
+@keyframes intro-num-in {
+  from { opacity: 0; transform: scale(1.2); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.intro-meta {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-3);
+}
+
+.intro-tl { top: 24px; left: 26px; }
+.intro-tr { top: 24px; right: 26px; }
+.intro-bl { bottom: 24px; left: 26px; }
+.intro-br { bottom: 24px; right: 26px; }
+
+.intro.out {
+  transform: translateY(-101%);
+  transition: transform 0.65s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+/* ---------- Hero split-text ---------- */
+
+/* hero copy holds still under the intro, then rises when it lifts */
+body.has-intro .hero-content .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: none;
+}
+
+.hero h1.split {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.hero h1 .w {
+  display: inline-block;
+  overflow: hidden;
+  /* clip room for descenders at the tight 1.02 line-height */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.hero h1 .c {
+  display: inline-block;
+  transform: translateY(118%);
+  transition: transform 0.85s var(--ease);
+}
+
+.hero h1.chars-in .c { transform: none; }
+
+/* ---------- Viewfinder: corner brackets + REC ---------- */
+
+@media (hover: hover) and (pointer: fine) {
+  .work-media::after,
+  .phone-screen::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity 0.3s ease, transform 0.55s var(--ease);
+    --vf: rgba(245, 245, 247, 0.85);
+    background:
+      linear-gradient(var(--vf), var(--vf)) left top / 16px 1.5px,
+      linear-gradient(var(--vf), var(--vf)) left top / 1.5px 16px,
+      linear-gradient(var(--vf), var(--vf)) right top / 16px 1.5px,
+      linear-gradient(var(--vf), var(--vf)) right top / 1.5px 16px,
+      linear-gradient(var(--vf), var(--vf)) left bottom / 16px 1.5px,
+      linear-gradient(var(--vf), var(--vf)) left bottom / 1.5px 16px,
+      linear-gradient(var(--vf), var(--vf)) right bottom / 16px 1.5px,
+      linear-gradient(var(--vf), var(--vf)) right bottom / 1.5px 16px;
+    background-repeat: no-repeat;
+  }
+
+  .work:hover .work-media::after,
+  .work:focus-visible .work-media::after,
+  .phone:hover .phone-screen::before,
+  .phone:focus-visible .phone-screen::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.showreel-rec {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--text);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+}
+
+.showreel-rec i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text);
+  animation: rec-blink 1.2s linear infinite;
+}
+
+@keyframes rec-blink {
+  0%, 55%  { opacity: 1; }
+  56%, 100% { opacity: 0.2; }
+}
+
+@media (max-width: 768px) {
+  .showreel-rec { top: 14px; right: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none; }
+  .showreel-rec i { animation: none; }
+  .hero h1 .c { transform: none; transition: none; }
 }

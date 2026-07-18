@@ -318,6 +318,9 @@
     var desc = document.querySelector('meta[name="description"]');
     if (desc && dict["meta.desc"]) desc.setAttribute("content", dict["meta.desc"]);
 
+    // main.js re-splits the hero title after every language swap
+    document.dispatchEvent(new Event("langchange"));
+
     try { localStorage.setItem("zubayr-lang", lang); } catch (e) { /* private mode */ }
   }
 

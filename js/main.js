@@ -31,6 +31,106 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  // ---------- Hero title split: per-letter rise ----------
+  var heroTitle = document.querySelector('.hero h1');
+
+  var splitHeroTitle = function () {
+    var plain = [];
+    var html = '';
+    var charIndex = 0;
+    Array.prototype.forEach.call(heroTitle.childNodes, function (node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent.split(/\s+/).forEach(function (word) {
+          if (!word) return;
+          plain.push(word);
+          html += '<span class="w">';
+          word.split('').forEach(function (ch) {
+            html += '<span class="c" style="transition-delay:' + charIndex * 22 + 'ms">' + ch + '</span>';
+            charIndex++;
+          });
+          html += '</span> ';
+        });
+      } else if (node.nodeName === 'BR') {
+        html += '<br>';
+      }
+    });
+    heroTitle.setAttribute('aria-label', plain.join(' '));
+    heroTitle.innerHTML = html.trim();
+    heroTitle.classList.add('split');
+  };
+
+  var heroTitleIn = function () {
+    if (!heroTitle || !heroTitle.classList.contains('split')) return;
+    // double rAF: the split markup must be laid out before the rise starts
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        heroTitle.classList.add('chars-in');
+      });
+    });
+  };
+
+  if (heroTitle && !reduceMotion) {
+    splitHeroTitle();
+    // i18n rewrites the h1, killing the spans: re-split and replay on language change
+    document.addEventListener('langchange', function () {
+      heroTitle.classList.remove('chars-in');
+      splitHeroTitle();
+      if (!introActive) heroTitleIn();
+    });
+  }
+
+  // ---------- Film-leader intro: 3-2-1 countdown, once per session ----------
+  var intro = document.getElementById('intro');
+  var introActive = false;
+  var introSeen = false;
+  try { introSeen = sessionStorage.getItem('zubayr-intro') === '1'; } catch (e) { /* private mode */ }
+
+  if (intro && !reduceMotion && !introSeen) {
+    introActive = true;
+    document.body.classList.add('has-intro');
+    document.body.style.overflow = 'hidden';
+
+    var introNum = document.getElementById('intro-num');
+    var introTc = document.getElementById('intro-tc');
+    var introPad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var introT0 = performance.now();
+
+    var introTcTimer = setInterval(function () {
+      var frames = Math.floor((performance.now() - introT0) / 1000 * 24);
+      introTc.textContent = 'TC 00:00:' + introPad(Math.floor(frames / 24)) + ':' + introPad(frames % 24);
+    }, 42);
+
+    var introStep = 3;
+    var introCountTimer = setInterval(function () {
+      introStep--;
+      if (introStep < 1) return;
+      introNum.textContent = String(introStep);
+      // restart the pop-in animation for the new number
+      introNum.style.animation = 'none';
+      void introNum.offsetWidth;
+      introNum.style.animation = '';
+    }, 450);
+
+    var finishIntro = function () {
+      if (!introActive) return;
+      introActive = false;
+      clearInterval(introTcTimer);
+      clearInterval(introCountTimer);
+      try { sessionStorage.setItem('zubayr-intro', '1'); } catch (e) { /* ignore */ }
+      intro.classList.add('out');
+      document.body.classList.remove('has-intro');
+      document.body.style.overflow = '';
+      heroTitleIn();
+      setTimeout(function () { intro.remove(); }, 700);
+    };
+
+    setTimeout(finishIntro, 1500);
+    intro.addEventListener('click', finishIntro);
+  } else {
+    if (intro) intro.remove();
+    heroTitleIn();
+  }
+
   // ---------- Showreel scroll zoom ----------
   var zoomWrap = document.querySelector('.showreel-zoom');
 
@@ -358,6 +458,57 @@
         btn.style.transform = '';
       });
     });
+  }
+
+  // ---------- Inertia smooth scroll: eased wheel on fine pointers ----------
+  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var glideTarget = 0;
+    var glideCurrent = 0;
+    var glideRaf = null;
+
+    var glideStep = function () {
+      glideCurrent += (glideTarget - glideCurrent) * 0.115;
+      if (Math.abs(glideTarget - glideCurrent) < 0.5) {
+        glideCurrent = glideTarget;
+        glideRaf = null;
+      } else {
+        glideRaf = requestAnimationFrame(glideStep);
+      }
+      window.scrollTo(0, glideCurrent);
+    };
+
+    window.addEventListener('wheel', function (e) {
+      if (introActive || e.ctrlKey || e.defaultPrevented) return;
+      // horizontal intent (reels row) and pinch-zoom stay native
+      if (e.shiftKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      if (lightbox && !lightbox.hidden) return;
+      e.preventDefault();
+      var dy = e.deltaY * (e.deltaMode === 1 ? 16 : 1);
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      if (glideRaf === null) {
+        glideCurrent = window.scrollY;
+        glideTarget = glideCurrent;
+      }
+      glideTarget = Math.max(0, Math.min(max, glideTarget + dy));
+      if (glideRaf === null) glideRaf = requestAnimationFrame(glideStep);
+    }, { passive: false });
+
+    // keyboard, scrollbar and anchor scrolls happen natively: follow them
+    window.addEventListener('scroll', function () {
+      if (glideRaf === null) {
+        glideCurrent = window.scrollY;
+        glideTarget = glideCurrent;
+      }
+    }, { passive: true });
+
+    // an anchor click must win over a still-running glide
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest && e.target.closest('a[href^="#"]');
+      if (link && glideRaf !== null) {
+        cancelAnimationFrame(glideRaf);
+        glideRaf = null;
+      }
+    }, true);
   }
 
   // ---------- Videos: play only when visible, respect reduced motion ----------

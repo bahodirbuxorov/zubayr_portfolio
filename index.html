@@ -102,6 +102,19 @@
 </head>
 <body>
 
+  <!-- Film-leader intro: 3-2-1 countdown, once per session (JS removes it; reduced motion skips it) -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro-ring">
+      <span class="intro-hand"></span>
+      <span class="intro-num" id="intro-num">3</span>
+    </div>
+    <span class="intro-meta intro-tl">Zubayr Production</span>
+    <span class="intro-meta intro-tr">24 fps</span>
+    <span class="intro-meta intro-bl" id="intro-tc">TC 00:00:00:00</span>
+    <span class="intro-meta intro-br">Scene 01 &mdash; Take 01</span>
+  </div>
+  <noscript><style>.intro { display: none; }</style></noscript>
+
   <!-- Navigation -->
   <header class="nav" id="nav">
     <div class="nav-inner">
@@ -253,6 +266,7 @@
             <!-- Oversized + pointer-events:none keeps YouTube overlays cropped out and non-interactive -->
             <iframe class="showreel-frame" src="https://www.youtube-nocookie.com/embed/QBpvtIF6uOY?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=QBpvtIF6uOY&amp;playsinline=1&amp;rel=0&amp;iv_load_policy=3&amp;disablekb=1&amp;fs=0" title="Showreel 2026" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <span class="showreel-caption">Showreel 2026</span>
+            <span class="showreel-rec" aria-hidden="true"><i></i>REC</span>
             <button type="button" class="showreel-play" id="showreel-play">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
               <span data-i18n="showreel.play">Ovoz bilan ko'rish</span>
