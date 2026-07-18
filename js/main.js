@@ -329,7 +329,6 @@
   var SPY_MAP = {
     ishlar: 'ishlar', reels: 'ishlar', grading: 'ishlar',
     xizmatlar: 'xizmatlar', jarayon: 'xizmatlar',
-    narxlar: 'narxlar',
     haqida: 'haqida', savollar: 'haqida', aloqa: 'haqida'
   };
   var spyLinks = {};
@@ -446,7 +445,7 @@
   }
 
   // ---------- Stat counters: numbers roll up odometer-style when seen ----------
-  var countEls = document.querySelectorAll('.trust-label, .price-tag');
+  var countEls = document.querySelectorAll('.trust-label');
   var countGen = 0;
 
   if (countEls.length && !reduceMotion && 'IntersectionObserver' in window) {

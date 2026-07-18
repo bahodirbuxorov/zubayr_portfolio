@@ -1065,80 +1065,6 @@ a:focus-visible,
   padding: 0 40px 24px 0;
 }
 
-/* ---------- Pricing ---------- */
-
-.price-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.price-card {
-  display: flex;
-  flex-direction: column;
-  padding: 32px 30px 28px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-media);
-  background: rgba(255, 255, 255, 0.02);
-  transition: transform 0.45s var(--ease), border-color 0.3s ease, background 0.3s ease;
-}
-
-.price-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.045);
-}
-
-.price-name {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-
-.price-desc {
-  color: var(--text-3);
-  font-size: 14px;
-  line-height: 1.55;
-  flex-grow: 1;
-}
-
-.price-tag {
-  font-family: var(--font-display);
-  font-size: 34px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-  margin-top: 22px;
-}
-
-/* the one deliberate inversion: the flagship package in white */
-.price-card.featured {
-  background: var(--text);
-  border-color: transparent;
-  color: #0A0A0B;
-}
-
-.price-card.featured .price-desc { color: rgba(10, 10, 11, 0.62); }
-
-.price-card.featured:hover { background: #fff; }
-
-.price-note {
-  margin-top: 36px;
-  font-size: 14.5px;
-  color: var(--text-3);
-}
-
-.price-note a {
-  color: var(--text-2);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
-}
-
-.price-note a:hover { color: var(--text); }
-
 /* ---------- Showreel lightbox ---------- */
 
 .showreel-play {
@@ -1258,7 +1184,6 @@ a:focus-visible,
 
 @media (max-width: 900px) {
   .process { grid-template-columns: repeat(2, 1fr); }
-  .price-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
 }
 
 @media (max-width: 768px) {
@@ -1278,9 +1203,6 @@ a:focus-visible,
 
 @media (max-width: 560px) {
   .process { grid-template-columns: 1fr; gap: 28px; }
-  .price-grid { grid-template-columns: 1fr; }
-  .price-card { padding: 26px 24px 24px; }
-  .price-tag { margin-top: 16px; font-size: 30px; }
 }
 
 /* ---------- New components: reduced motion ---------- */
