@@ -5,3 +5,10 @@ assets/clients/*.png
 
 # Original heavy master kept locally; the compressed hero-new.mp4 ships instead.
 assets/hero-new.MOV
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
